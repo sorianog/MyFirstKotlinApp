@@ -1,10 +1,12 @@
 package com.sorianog.myfirstkotlinapp
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -26,5 +28,14 @@ class MainActivity : AppCompatActivity() {
         count++
 
         showCountTextView.text = count.toString()
+    }
+
+    fun randomMe(view: View) {
+        val randomIntent = Intent(this, RandomActivity::class.java)
+        val countString = textView.text.toString()
+        var count: Int = Integer.parseInt(countString)
+
+        randomIntent.putExtra(RandomActivity.TOTAL_COUNT, count)
+        startActivity(randomIntent)
     }
 }
